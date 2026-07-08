@@ -1,4 +1,9 @@
-
+      function timeUpdate() {
+      var currentTime = new Date().toLocaleString();
+      var timeText = document.querySelector("#timebarElement");
+      timeText.innerHTML = currentTime
+      }
+      setInterval(timeUpdate, 1000);
 
 // Make the DIV element draggable:
 dragElement(document.getElementById("window"));  
@@ -55,9 +60,3 @@ function dragElement(element) {
   }
 }
 
-      function timeUpdate() {
-      var currentTime = new Date().toLocaleString();
-      var timeText = document.querySelector("#timebarElement");
-      timeText.innerHTML = currentTime
-      }
-      setInterval(timeUpdate, 1000);
