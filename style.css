@@ -30,7 +30,8 @@
 }
 
 .welcomeheader {
-    user-select: none;
-    cursor: grab;
-    width: 256px;
+  flex: 1;
+  height: 24px;
+  cursor: grab;
+  user-select: none;
 }
