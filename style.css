@@ -1,0 +1,17 @@
+.closebutton {
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+    background-color: red;
+    border-radius: 16px;
+    width: 16px;
+    height: 16px;
+}
+
+.closetext {
+    cursor: pointer;
+    margin: 0px;
+    text-align: center;
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+}
