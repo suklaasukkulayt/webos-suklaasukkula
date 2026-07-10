@@ -36,3 +36,7 @@
   cursor: grab;
   user-select: none;
 }
+
+.selected {
+    background-color: blue;
+}
