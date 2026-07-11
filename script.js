@@ -136,9 +136,9 @@ if (textpadIcon) {
 
 var biggestIndex = 1;
 
-function addWindowTapHandling(textpadScreen) {
-  textpadScreen.addEventListener("mousedown", () =>
-    handleWindowTap(textpadScreen)
+function addWindowTapHandling(element) {
+  element.addEventListener("mousedown", () =>
+    handleWindowTap(element)
   )
 }
 
@@ -151,4 +151,14 @@ function addWindowTapHandling(welcomeScreen) {
 function handleWindowTap(element) {
   biggestIndex++;  // Increment biggestIndex by 1
   element.style.zIndex = biggestIndex;
+  topBar.style.zIndex = biggestIndex + 1;
 }
+
+function openWindow(element) {
+  element.style.display = "flex";
+  biggestIndex++;  // Increment biggestIndex by 1
+  element.style.zIndex = biggestIndex;
+  topBar.style.zIndex = biggestIndex + 1;
+}
+
+var topBar = document.querySelector("#top")
