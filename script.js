@@ -102,3 +102,10 @@ function handleIconTap(element) {
 }
 
 dragElement(document.querySelector("#textpad"))
+
+
+var textpadScreen = document.querySelector("#textpad")
+
+var textpadScreenClose = document.querySelector("#textpadclose")
+
+textpadScreenClose.addEventListener("click", () => closeWindow(textpadScreen));
