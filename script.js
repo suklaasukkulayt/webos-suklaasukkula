@@ -156,3 +156,20 @@ function openWindow(element) {
 // Add click handling to bring windows to front
 addWindowTapHandling(welcomeScreen);
 addWindowTapHandling(textpadScreen);
+
+
+
+        const textarea = document.getElementById('textarea');
+        
+        // Load saved text from local storage
+        window.onload = function() {
+            const savedText = localStorage.getItem('myTextareaContent');
+            if (savedText) {
+                textarea.value = savedText;
+            }
+        };
+
+        // Save text to local storage on every input
+        textarea.addEventListener('input', function() {
+            localStorage.setItem('myTextareaContent', textarea.value);
+        });
