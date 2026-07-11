@@ -66,11 +66,6 @@ function closeWindow(element) {
     element.style.display = "none"
   }
 }
-function openWindow(element) {
-  if (element) {
-    element.style.display = "flex"
-  }
-}
 function openAllWindows() {
   document.querySelectorAll(".welcome").forEach(function(windowElement) {
     openWindow(windowElement);
