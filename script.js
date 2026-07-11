@@ -159,17 +159,79 @@ addWindowTapHandling(textpadScreen);
 
 
 
-        const textarea = document.getElementById('textarea');
-        
-        // Load saved text from local storage
-        window.onload = function() {
-            const savedText = localStorage.getItem('myTextareaContent');
-            if (savedText) {
-                textarea.value = savedText;
-            }
-        };
+var content = [
+  {
+    title: "TeXtpad bottombar",
+    date: "Welcome",
+    content: `
+        <h1 style="margin: 4px; color: rgb(16, 255, 28)">TeXtpad</h1>
+        <img style="width: 128px; height: 128px; border-radius: 16px; object-fit: cover;" src="./textpad.png"/>
+        <p>Hello <strong>user</strong>! This is a simple text editor, like notepad, but in KuuppaOS (except it doesn't support multiple notes)</p>
+        <textarea style="width: 256px; height: 128px; resize: none;" id="textarea" autofocus spellcheck="false"></textarea>
+      `
+  }
 
-        // Save text to local storage on every input
-        textarea.addEventListener('input', function() {
-            localStorage.setItem('myTextareaContent', textarea.value);
-        });
+
+  ,{
+    title: "Sample Text",
+    date: "11/07/2026",
+    content: `
+        <p>
+          KuuppaOS is the best :D
+        </p>
+      `
+  }
+];
+
+function attachTextpadEditor() {
+  const textarea = document.getElementById('textarea');
+  if (!textarea) {
+    return;
+  }
+
+  const savedText = localStorage.getItem('myTextareaContent');
+  if (savedText !== null) {
+    textarea.value = savedText;
+  }
+
+  textarea.oninput = function() {
+    localStorage.setItem('myTextareaContent', textarea.value);
+  };
+}
+
+function setTextpadContent(index) {
+  var textpadContent = document.querySelector("#textpadContent");
+  if (!textpadContent || !content[index]) {
+    return;
+  }
+
+  textpadContent.innerHTML = content[index].content;
+  attachTextpadEditor();
+}
+
+function addToBottomBar(index) {
+  var bottomBar = document.querySelector("#bottomBar");
+  if (!bottomBar || !content[index]) {
+    return;
+  }
+
+  var note = content[index];
+  var newDiv = document.createElement("div");
+  newDiv.style.cssText = "background-color: rgb(231, 25, 25); width: 220px; padding: 10px; border-radius: 8px; cursor: pointer;";
+  newDiv.innerHTML = `
+    <p style="margin: 0px;">${note.title}</p>
+    <p style="font-size: 12px; margin: 0px;">${note.date}</p>
+  `;
+  newDiv.addEventListener("click", function() {
+    setTextpadContent(index);
+  });
+
+  bottomBar.appendChild(newDiv);
+}
+
+setTextpadContent(0);
+
+for (let i = 0; i < content.length; i++) {
+  addToBottomBar(i);
+}
+
