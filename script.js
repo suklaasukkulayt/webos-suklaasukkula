@@ -161,26 +161,16 @@ addWindowTapHandling(textpadScreen);
 
 var content = [
   {
-    title: "TeXtpad bottombar",
-    date: "Welcome",
+    title: "TeXtpad is so good!",
+    date: "- nobody",
     content: `
-        <h1 style="margin: 4px; color: rgb(16, 255, 28)">TeXtpad</h1>
-        <img style="width: 128px; height: 128px; border-radius: 16px; object-fit: cover;" src="./textpad.png"/>
+        <h1 style="margin: 2px; color: rgb(243, 219, 5)">TeXtpad</h1>
+        <img style="width: 64px; height: 64px; border-radius: 16px; object-fit: cover;" src="./textpad.png"/>
         <p>Hello <strong>user</strong>! This is a simple text editor, like notepad, but in KuuppaOS (except it doesn't support multiple notes)</p>
         <textarea style="width: 256px; height: 128px; resize: none;" id="textarea" autofocus spellcheck="false"></textarea>
       `
   }
 
-
-  ,{
-    title: "Sample Text",
-    date: "11/07/2026",
-    content: `
-        <p>
-          KuuppaOS is the best :D
-        </p>
-      `
-  }
 ];
 
 function attachTextpadEditor() {
