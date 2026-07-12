@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <title>KuuppaOS</title>
-  <body style="height: 100vh; background-image: url(https://static.vecteezy.com/system/resources/previews/028/217/320/non_2x/contemporary-wallpaper-for-interior-design-with-green-leaves-and-desert-inspired-background-and-texture-free-photo.jpg); background-size: cover; font-family:Gill Sans, sans-serif; background-color: antiquewhite;">
+  <body style="height: 97.5vh; background-image: url(https://static.vecteezy.com/system/resources/previews/028/217/320/non_2x/contemporary-wallpaper-for-interior-design-with-green-leaves-and-desert-inspired-background-and-texture-free-photo.jpg); background-size: cover; font-family:Gill Sans, sans-serif; background-color: antiquewhite;">
     <div class="welcome" id="welcome" style="top:50%; left: 50%;">
     <div style="display:inline-block" class="welcomeheader"> 
       <p id="welcomeheader">
@@ -23,7 +23,7 @@
     <a href="https://stardance.hackclub.com/projects/31853">KuuppaOS project</a>
     </div>
 
-    <div id="top" style="font-family: 'Times New Roman', Times, serif; position: fixed; bottom: 0; display: flex; justify-content: space-between; width: 100%; background-color: rgba(0, 0, 0, 0.25); backdrop-filter: blur(15px); border-radius: 16px;">
+    <div id="top" style="font-family: 'Times New Roman', Times, serif; position: fixed; bottom: 0; display: flex; justify-content: space-between; width: 99%; background-color: rgba(0, 0, 0, 0.25); backdrop-filter: blur(15px); border-radius: 16px;">
         <p style="color:antiquewhite; margin-left: 8px;">
             KuuppaOS
         </p>
@@ -44,6 +44,9 @@
           <img src="./weather-icon-set-free-vector.png" alt="Weather" style="width: 64px; height: 64px; border-radius: 8px;">
           <p style="color: white;">Weather</p>
     </div>
+        <div id="clockicon" style="text-align: center; width: fit-content; cursor: pointer;">
+          <img src="./stock-of-clock-free-vector.png" alt="Clock" style="width: 72px; height: 72§px; border-radius: 8px;">
+          <p style="color: white;">Clock</p>
   </div>
   
   <div class="welcome" style="top:55%; left: 30%; display: none;" id="textpad">
@@ -69,9 +72,9 @@
 
 
 <div class="welcome" id="weather" style="top:60%; left: 70%; display: none;">
-    <div style="display:inline-block" class="welcomeheader"> 
+    <div style="display:inline-block" class="welcomeheader">
       <p id="weatherheader">
-        Welcome to Weather!
+        Weather
       </p>
     </div>
     
@@ -88,6 +91,52 @@
     </div>
 
 
+
+    <div class="welcome" id="clock" style="top:55%; left: 40%; width:325px; height: 350px; display: none;">
+    <div style="display:inline-block" class="welcomeheader"> 
+      <p id="clockheader">
+        Clock
+      </p>
+    </div>
+    
+    <div style="display:inline-block" class="closebutton" id="clockclose">
+          
+          <p class="closetext">X</p>
+        </div>
+        <div class="container">
+ <div class="clock-outer"></div>
+ <div class="clock">
+ <!-- - Clock numbers → -->
+ <div class="number number1">1</div>
+ <div class="number number2">2</div>
+ <div class="number number3">3</div>
+ <div class="number number4">4</div>
+ <div class="number number5">5</div>
+ <div class="number number6">6</div>
+ <div class="number number7">7</div>
+ <div class="number number8">8</div>
+ <div class="number number9">9</div>
+ <div class="number number10">10</div>
+ <div class="number number11">11</div>
+ <div class="number number12">12</div>
+<!-- - Date and month display → -->
+ <div class="container-2">
+ <div id="date">7</div>
+ <div id="month">22</div> 
+ </div>
+<!-- - Clock hands → -->
+ <div id="hour-hand" class="hand hour"></div>
+ <div id="minute-hand" class="hand minute"></div> 
+ <div id="second-hand" class="hand second"></div>
+ 
+ <!-- Small circle in the center → -->
+ <div id="small-circle"></div> 
+ </div>
+ </div>
+    </div>
+    
+    
+    
     <script type="module" src="script.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
 

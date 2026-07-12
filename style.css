@@ -6,6 +6,13 @@
     border-radius: 16px;
     width: 16px;
     height: 16px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
 }
 
 .closetext {
@@ -25,14 +32,18 @@
     width: 256px;
     border-radius: 16px;
     flex-direction: column;
+    resize: both;
+    overflow: auto;
 }
 
 .welcomeheader {
   text-align: center;
   font-size: 12px;
-  height: 12px;
+  min-height: 16px;
   cursor: grab;
   user-select: none;
+  padding-right: 24px;
+  margin: 0 0 8px 0;
 }
 
 .selected {
@@ -49,4 +60,156 @@
     border: 1px dashed black;
     border-radius: 8px;
     background-color: rgba(255, 255, 255, 0.5);
+}
+
+
+
+
+
+
+#clock {
+  width: 300px;
+  max-width: calc(100vw - 32px);
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 12px 12px;
+  box-sizing: border-box;
+}
+
+.container {
+ position: relative;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 256px;
+ height: 256px;
+ background: transparent;
+ margin-top: 0;
+}
+
+.clock-outer {
+ width: 0;
+ height: 0;
+ position: absolute;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%, -50%);
+ background: transparent;
+}
+.clock {
+ width: 220px;
+ height: 220px;
+ border: 2px solid black;
+ border-radius: 50%;
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+ position: absolute;
+ left: 50%;
+ top: 50%;
+ transform: translate(-50%, -50%);
+ background: #f1f1f1;
+}
+.clock .number {
+ position: absolute;
+ inset: 0;
+ text-align: center;
+ font-size: 1rem;
+}
+.clock .hand {
+ --rotation: 10;
+ position: absolute;
+ background-color: black;
+ border: 1px solid white;
+ border-top-left-radius: 10px;
+ border-top-right-radius: 10px;
+ left: 50%;
+ bottom: 50%;
+ transform-origin: bottom;
+ transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+}
+.clock .hand.minute {
+ height: 38%;
+ width: 4px;
+}
+#small-circle {
+ position: absolute;
+ width: 14px;
+ height: 14px;
+ border-radius: 50%;
+ background-color: red;
+ left: 50%;
+ bottom: 48%;
+ transform: translateX(-50%);
+}
+.clock .hand.second {
+ height: 44%;
+ width: 2px;
+ background: red;
+}
+.clock .hand.hour {
+ height: 28%;
+ width: 6px;
+}
+.container-2 {
+ display: flex;
+ position: absolute;
+ bottom: 44%;
+ left: 66%;
+ border: 2px solid black;
+ border-radius: 10px;
+ width: 56px;
+ height: 34px;
+ font-size: 0.9rem;
+}
+.container-2 #date {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ border-right: 1px solid black;
+ width: 28px;
+ height: 34px;
+ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.container-2 #month {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: fit-content;
+ height: 34px;
+ font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.number1 {
+ transform: rotate(30deg);
+}
+.number2 {
+ transform: rotate(60deg);
+}
+.number3 {
+ transform: rotate(90deg);
+}
+.number4 {
+ transform: rotate(120deg);
+}
+.number5 {
+ transform: rotate(150deg);
+}
+.number6 {
+ transform: rotate(180deg);
+}
+.number7 {
+ transform: rotate(210deg);
+}
+.number8 {
+ transform: rotate(240deg);
+}
+.number9 {
+ transform: rotate(270deg);
+}
+.number10 {
+ transform: rotate(300deg);
+}
+.number11 {
+ transform: rotate(330deg);
 }
