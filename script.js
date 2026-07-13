@@ -302,26 +302,38 @@ function weatherCodeToEmoji(code) {
 }
 
 async function getLocationName(lat, lon) {
-  const url = `https://photon.komoot.io/reverse?lat=${lat}&lon=${lon}`;
+  const providers = [
+    `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`,
+    `https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}&zoom=10&accept-language=en`
+  ];
 
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error("reverse geocode request failed");
+  for (const url of providers) {
+    try {
+      const response = await fetch(url, {
+        headers: {
+          Accept: "application/json"
+        }
+      });
+
+      if (!response.ok) {
+        continue;
+      }
+
+      const data = await response.json();
+      const city = data.city || data.locality || data.address?.city || data.address?.town || data.address?.village || data.address?.suburb || "";
+      const region = data.principalSubdivision || data.address?.state || data.address?.county || "";
+      const country = data.countryName || data.address?.country || "";
+      const label = [city, region, country].filter(Boolean).join(", ");
+
+      if (label) {
+        return label;
+      }
+    } catch (error) {
+      console.warn("Could not resolve location name with provider", url, error);
     }
-
-    const data = await response.json();
-    const feature = data.features && data.features[0];
-    const properties = feature && feature.properties ? feature.properties : {};
-    const city = properties.city || properties.locality || properties.name || "";
-    const country = properties.country || "";
-    const label = city && country ? `${city}, ${country}` : city || country || `${lat.toFixed(2)}, ${lon.toFixed(2)}`;
-
-    return label;
-  } catch (error) {
-    console.warn("Could not resolve location name", error);
-    return `${lat.toFixed(2)}, ${lon.toFixed(2)}`;
   }
+
+  return `${lat.toFixed(2)}, ${lon.toFixed(2)}`;
 }
 
 async function showWeather(lat, lon) {
