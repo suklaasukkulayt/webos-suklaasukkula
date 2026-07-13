@@ -284,25 +284,96 @@ function weatherCodeToText(code) {
   return weatherCodes[code] || "Unknown";
 }
 
-function showWeather(lat, lon) {
+function weatherCodeToEmoji(code) {
+  const weatherIcons = {
+    0: "☀️",
+    1: "🌤️",
+    2: "⛅",
+    3: "☁️",
+    45: "🌫️",
+    48: "🌫️",
+    51: "🌦️",
+    61: "🌧️",
+    71: "🌨️",
+    95: "⛈️"
+  };
+
+  return weatherIcons[code] || "🌍";
+}
+
+async function getLocationName(lat, lon) {
+  const url = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`;
+
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("reverse geocode request failed");
+    }
+
+    const data = await response.json();
+    const administrative = data.localityInfo?.administrative || [];
+    const city = data.city || data.locality || administrative.find((item) => item.adminLevel <= 8 && item.name)?.name || "";
+    const country = data.countryName || administrative.find((item) => item.adminLevel === 2)?.name || "";
+
+    if (city && country) {
+      return `${city}, ${country}`;
+    }
+
+    if (city) {
+      return city;
+    }
+
+    if (country) {
+      return country;
+    }
+  } catch (error) {
+    console.warn("Could not resolve location name", error);
+  }
+
+  return `${lat.toFixed(2)}, ${lon.toFixed(2)}`;
+}
+
+function getLocationNameFromTimezone(timezone) {
+  if (!timezone || !timezone.includes("/")) {
+    return "";
+  }
+
+  const parts = timezone.split("/");
+  const city = parts[parts.length - 1].replace(/_/g, " ");
+  return `${city}, ${parts[0]}`;
+}
+
+async function showWeather(lat, lon) {
   const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&timezone=auto`;
 
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      const temp = data.current.temperature_2m;
-      const code = data.current.weather_code;
-      const desc = weatherCodeToText(code);
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    const temp = data.current.temperature_2m;
+    const code = data.current.weather_code;
+    const desc = weatherCodeToText(code);
+    const icon = weatherCodeToEmoji(code);
+    let locationName = await getLocationName(lat, lon);
 
-      document.querySelector("#weathercontent").innerHTML = `
-        <p><strong>Temperature:</strong> ${temp}°C</p>
-        <p><strong>Condition:</strong> ${desc}</p>
-      `;
-    })
-    .catch(() => {
-      document.querySelector("#weathercontent").innerHTML =
-        "<p>Weather could not be loaded.</p>";
-    });
+    if (!locationName || locationName.includes("lat") || locationName.includes("lon")) {
+      locationName = getLocationNameFromTimezone(data.timezone || "");
+    }
+
+    const weatherIcon = document.querySelector("#weather-icon");
+
+    if (weatherIcon) {
+      weatherIcon.textContent = icon;
+    }
+
+    document.querySelector("#weathercontent").innerHTML = `
+      <p><strong>Location:</strong> ${locationName || "Your location"}</p>
+      <p><strong>Temperature:</strong> ${temp}°C</p>
+      <p><strong>Condition:</strong> ${desc}</p>
+    `;
+  } catch {
+    document.querySelector("#weathercontent").innerHTML =
+      "<p>Weather could not be loaded.</p>";
+  }
 }
 
 function getUserWeather() {
