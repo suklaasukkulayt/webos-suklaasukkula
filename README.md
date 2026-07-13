@@ -2,6 +2,10 @@
 
 WebOS made for Stardance competition  
 Working clock in the bottom bar, draggable and closable windows  
+Four apps:  
+TeXtpad: you can type text and it saves locally to your browser  
+Clock: analog clock  
+Weather: shows the weather (location might not work)  
+Welcome: welcome screen  
 
-not finished yet  
-Sorry for meaningless commits, but my only way to test the site is to commit and I prefer to commit quickly because deploying takes ~40s.  
+Sorry for meaningless commits but I didn't have other ways of testing until now  
