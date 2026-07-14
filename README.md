@@ -16,10 +16,10 @@ Welcome: welcome screen
 KuuppaVid (youtube): plays never gonna give you up when opened
 KuuppaMusic (spotify): you can listen to the spotify lofi beats playlist (30s from every song because it's just an embed)
 
-<img width="1280" height="663" alt="kuuppaos screenshot" src="https://github.com/user-attachments/assets/8a93dd26-edd8-4fb2-ae91-11ab54451637" />
+<img width="1280" height="669" alt="kuuppaos-screenshot" src="https://github.com/user-attachments/assets/580ad953-0419-4865-93eb-47d5f1d05e6a" />
+
 Showcase video in github (kuupaos-video.mp4)   
 
-<img width="903" height="608" alt="YouTube and spotify app showcase" src="https://github.com/user-attachments/assets/aabdbee6-34a3-4fe2-90bf-a28dbb4504b8" />
 
 
 
