@@ -415,3 +415,4 @@ date.textContent = currentDate.getDate();
  month.textContent = currentDate.toLocaleString('default', { month: 'short' });
 }
 setInterval(setClock, 10);
+setInterval(getUserWeather, 10 * 60 * 1000);
