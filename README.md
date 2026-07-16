@@ -5,6 +5,7 @@
 # KuuppaOS
 
 WebOS made for Stardance competition  
+It doesn't really have any purpose, I made it just for fun and I also wanted to learn HTML.
 
 Working clock in the bottom bar, draggable, resizable and closable windows  
 
@@ -20,9 +21,10 @@ KuuppaMusic (spotify): you can listen to the spotify lofi beats playlist (30s fr
 
 Showcase video in github (kuupaos-video.mp4)   
 
-
-
-
+Made in github codespaces(vs code) with HTML, CSS, JS  
+Images made with online resources and Pixlr Express  
+Resources I used: webos 1 jam, online resources(for example embeds and analog clock) and help from github copilot(for example weather app and function starting autoplay when kuuppavid is opened)  
 
 Github copilot is used to help with features like weather and fix some problems   
+
 Sorry for meaningless commits but I didn't have other ways of testing until now  
