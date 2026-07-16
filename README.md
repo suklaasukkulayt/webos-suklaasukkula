@@ -12,7 +12,7 @@ Working clock in the bottom bar, draggable, resizable and closable windows
 Four apps:  
 TeXtpad: you can type text and it saves locally to your browser  
 Clock: analog clock   
-Weather: shows the weather (location doesn't work on my steam deck but it works on my phone)  
+Weather: shows the weather DOESN'T WORK WITH HELIUM BROWSER for some reason (location doesn't work on my steam deck but it works on my phone)  
 Welcome: welcome screen  
 KuuppaVid (youtube): plays never gonna give you up when opened
 KuuppaMusic (spotify): you can listen to the spotify lofi beats playlist (30s from every song because it's just an embed)
